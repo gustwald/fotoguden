@@ -5,7 +5,21 @@
   "repository": "git@github.com:gustwald/fotoguden.git",
   "author": "hi@jonte.io",
   "license": "MIT",
+  "scripts": {
+    "start": "nodemon server.babel.js"
+  },
   "dependencies": {
-    "express": "^4.14.1"
+    "babel-polyfill": "^6.22.0",
+    "babel-register": "^6.22.0",
+    "ejs": "^2.5.5",
+    "express": "^4.14.1",
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "babel-loader": "^6.2.10",
+    "babel-plugin-syntax-flow": "^6.18.0",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-stage-0": "^6.22.0"
   }
 }
