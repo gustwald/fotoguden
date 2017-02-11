@@ -1,0 +1,11 @@
+{
+  "name": "fotoguden",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:gustwald/fotoguden.git",
+  "author": "hi@jonte.io",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.14.1"
+  }
+}
