@@ -6,7 +6,9 @@
   "author": "hi@jonte.io",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon server.babel.js"
+    "start": "nodemon src/server/server.babel.js",
+    "css" : "node-sass --include-path scss src/scss/main.scss dist/main.css --watch",
+    "js" : "babel src/js/main.js --watch --out-file dist/main.min.js"
   },
   "dependencies": {
     "babel-polyfill": "^6.22.0",

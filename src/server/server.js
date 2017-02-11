@@ -8,7 +8,8 @@ const PROD = process.env.NODE_ENV === 'production';
 
 const app = express();
 
-app.set('views', path.join(__dirname, '/src/pages'));
+app.use('/static', express.static('dist'));
+app.set('views', path.join(__dirname, '../pages'));
 app.engine('html', renderFile);
 
 // type ResData = {
