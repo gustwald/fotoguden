@@ -43,26 +43,32 @@ const getUrlFromPhoto = photo => {
 
 // const url = 'https://api.flickr.com/services/rest/?per_page=500&method=flickr.people.getPhotos&nojsoncallback=1&user_id=142680935@N04&api_key=b5b36f430b9920365ecad5acb78b1f9d&format=json';
 
+const getLandingData = ({ photosets : { photoset }}) => {
+    const responseData = {
+      metaData : {
+        title : 'Startsida',
+      },
+      template : 'landing',
+      content : undefined
+    };
+
+    return {
+      ...responseData,
+      content : {
+      photosets : photoset.map(set => ({
+          ...set,
+          url : getPhotoshotUrlFromPhoto(set)
+        }))
+      }
+    }
+}
 
 // Routes
 app.get('/', (req, res) => page(res, () => {
-
   return new Promise((resolve, reject) => {
-    getCollections().then(data => {
-      console.log(data);
-     resolve({
-       metaData : {
-         title : 'Startsida',
-       },
-       template : 'landing',
-       content : {
-         photos : [],
-         collections : []
-       }
-     });
-
-    })
-  });
+    getCollections()
+        .then(response => resolve(getLandingData(response)));
+    });
 }));
 
 app.get('/collections', (req, res) => page(res, () => {
