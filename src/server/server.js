@@ -4,6 +4,7 @@ import express from 'express';
 import path from 'path';
 import request from 'request';
 import { renderFile } from 'ejs';
+import { getCollections } from '../flickrApi';
 
 const PROD = process.env.NODE_ENV === 'production';
 
@@ -40,46 +41,28 @@ const getUrlFromPhoto = photo => {
         photo.server + "/" + photo.id + "_" + photo.secret + "_" + "t.jpg";
 }
 
+// const url = 'https://api.flickr.com/services/rest/?per_page=500&method=flickr.people.getPhotos&nojsoncallback=1&user_id=142680935@N04&api_key=b5b36f430b9920365ecad5acb78b1f9d&format=json';
+
+
 // Routes
 app.get('/', (req, res) => page(res, () => {
 
   return new Promise((resolve, reject) => {
-    const url = 'https://api.flickr.com/services/rest/?per_page=500&method=flickr.people.getPhotos&nojsoncallback=1&user_id=142680935@N04&api_key=b5b36f430b9920365ecad5acb78b1f9d&format=json';
+    getCollections().then(data => {
+      console.log(data);
+     resolve({
+       metaData : {
+         title : 'Startsida',
+       },
+       template : 'landing',
+       content : {
+         photos : [],
+         collections : []
+       }
+     });
 
-    const jsonFlickrApi = rsp => rsp;
-
-    request(url, (error, response, body) => {
-      if (!error && response.statusCode == 200) {
-      
-        const { photos } = JSON.parse(body)
-        console.log(photos);
-
-        const data = {
-            metaData : {
-              title : 'Startsida',
-            },
-            template : 'landing',
-            content : {
-              photos : photos.photo.map(photo => {
-                return {
-                  ...photo,
-                  url : getUrlFromPhoto(photo)
-                }
-              }),
-              collections : []
-            }
-          };
-
-          resolve(data);
-      }
-      else {
-        reject();
-      }
-
-    });
-    
+    })
   });
-
 }));
 
 app.get('/collections', (req, res) => page(res, () => {
