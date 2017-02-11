@@ -17,12 +17,17 @@ export const getCollections = () => {
     method : 'flickr.photosets.getList'
   });
 
-  console.log(url)
-
   return new Promise((resolve, reject) => {
     request(url, (error, response, body) => {
       if (!error && response.statusCode == 200) {
-        resolve(JSON.parse(body))
+        const parsed = JSON.parse(body);
+        
+        if(parsed.stat == 'fail') {
+          reject('Not found');
+        }
+        else {
+          resolve(parsed)
+        }
       }
       else {
         reject(error);
@@ -31,3 +36,31 @@ export const getCollections = () => {
 
   });
 };
+
+
+
+export const getPhotosetPhotos = (id) => {
+  const url = getUrl({
+    method : 'flickr.photosets.getPhotos',
+    photoset_id : id
+  });
+
+  return new Promise((resolve, reject) => {
+    request(url, (error, response, body) => {
+      if (!error && response.statusCode == 200) {
+        const parsed = JSON.parse(body);
+        console.log(parsed)
+        if(parsed.stat == 'fail') {
+          reject('Not found');
+        }
+        else {
+          resolve(parsed)
+        }
+      }
+      else {
+        reject(error);
+      }
+    })
+
+  });
+}
