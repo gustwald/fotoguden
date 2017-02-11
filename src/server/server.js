@@ -15,6 +15,8 @@ const router = express.Router();
 
 app.use('/api', router);
 app.use('/static', express.static('dist'));
+app.use('/images', express.static('src/img'));
+
 app.set('views', path.join(__dirname, '../pages'));
 app.engine('html', renderFile);
 
