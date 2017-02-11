@@ -1,5 +1,5 @@
-import { getCollections, getPhotosetPhotos } from '../flickrApi';
-
+import { getCollections, getPhotosetPhotos, getPhotoSizes } from '../flickrApi';
+import request from 'request';
 
 const getPhotoshotUrlFromPhoto = photo => {
   return "http://c1.staticflickr.com/1/" + 
@@ -14,8 +14,6 @@ const getLandingData = ({ photosets : { photoset }}) => {
       template : 'collections',
       content : undefined
     };
-
-    console.log(photoset)
 
     return {
       ...responseData,
@@ -42,6 +40,16 @@ export const collectionDetail = (req, res) => {
             .catch(e => res.status(404).send('Not found'))
 
 }
-const getCollectionPhotos = () => {
-    
+
+
+export const getLargeImage = (req, res) => {
+  const photoId = req.params.photoId;
+
+  getPhotoSizes(photoId)
+      .then(({ sizes : { size }}) => {
+          const url = size.find(s => s.label == 'Large 2048').source;
+          request.get(url).pipe(res);
+      })
+      .catch(e => res.status(404).send('Not found'))
+
 }

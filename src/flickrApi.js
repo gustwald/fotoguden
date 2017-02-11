@@ -49,7 +49,31 @@ export const getPhotosetPhotos = (id) => {
     request(url, (error, response, body) => {
       if (!error && response.statusCode == 200) {
         const parsed = JSON.parse(body);
-        console.log(parsed)
+        if(parsed.stat == 'fail') {
+          reject('Not found');
+        }
+        else {
+          resolve(parsed)
+        }
+      }
+      else {
+        reject(error);
+      }
+    })
+
+  });
+}
+
+export const getPhotoSizes = (id) => {
+  const url = getUrl({
+    method : 'flickr.photos.getSizes',
+    photo_id : id
+  });
+
+  return new Promise((resolve, reject) => {
+    request(url, (error, response, body) => {
+      if (!error && response.statusCode == 200) {
+        const parsed = JSON.parse(body);
         if(parsed.stat == 'fail') {
           reject('Not found');
         }

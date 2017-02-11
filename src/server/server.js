@@ -6,7 +6,7 @@ import request from 'request';
 import { renderFile } from 'ejs';
 import { getCollections } from '../flickrApi';
 import landing from './landing';
-import collections, { collectionDetail } from './collections';
+import collections, { collectionDetail, getLargeImage } from './collections';
 
 const PROD = process.env.NODE_ENV === 'production';
 
@@ -37,10 +37,6 @@ const page = (res, getData) => {
 };
 
 
-const getUrlFromPhoto = photo => {
-  return "http://farm" + photo.farm + ".static.flickr.com/" + 
-        photo.server + "/" + photo.id + "_" + photo.secret + "_" + "t.jpg";
-}
 
 // Routes
 app.get('/', (req, res) => page(res, landing));
@@ -50,7 +46,10 @@ app.get('/collections/:collectionId', (req, res) => page(res, () => {
 
 }));
 
+// Api
 router.get('/collections/:collectionId', (req, res) => collectionDetail(req, res));
+router.get('/photos/:photoId', (req, res) => getLargeImage(req, res));
+
 
 
 const server = http.createServer(app);
