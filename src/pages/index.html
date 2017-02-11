@@ -1,28 +1,27 @@
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="/static/main.css">
+        <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     </head>
 
 
     <body>
         <div class="container">
             <header class="header">
-                <div class="background-image">
-                </div>
                 <div class="title">
                     <nav class="navigation">
-                        <ul>
-                            <a href="#"><li>Start</li></a>
-                            <a href="#"><li>Albums</li></a>
-                            <a href="#"><li>Om</li></a>
+                        <ul class="nav">
+                            <a class="nav-links" href="#"><li>Start</li></a>
+                            <a class="nav-links" href="#"><li>Albums</li></a>
+                            <a class="nav-links" href="#"><li>Om</li></a>
                         </ul>
                     </nav>
                     <h1>Eril Nilsson</h1>
                 </div>
+                <div class="arrow">
+                </div>
             </header>
-            <button class="go-further">
-                PIL NERÅT
-            </button>
+            <section class="content">
             <div class="photo-grid">
                 <div class="photo-grid-children">
                     <p class="photo-grid-descripion"></p>
@@ -33,5 +32,6 @@
             </div>
         </div>
         <% include collection %>
+        </section>
     </body>
 </html>

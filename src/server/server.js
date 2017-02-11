@@ -11,6 +11,8 @@ const PROD = process.env.NODE_ENV === 'production';
 const app = express();
 
 app.use('/static', express.static('dist'));
+app.use('/images', express.static('src/img'));
+
 app.set('views', path.join(__dirname, '../pages'));
 app.engine('html', renderFile);
 
