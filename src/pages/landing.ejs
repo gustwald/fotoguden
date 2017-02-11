@@ -1,7 +1,17 @@
-<h1>Landing</h1>
-
-
-<% photosets.forEach(function(s) { %>
-<h2><%= s.title._content %></h2>
-<img src="<%= s.url %>" />
+<div class="grid-wrapper">
+<% selectedImages.forEach(function(s) { %>
+<div class="grid-children">
+    <img src="<%= s %>" />
+</div>
 <% }); %>
+</div>
+<div class="collections">
+<% photosets.forEach(function(s) { %>
+<div class="collection-wrap" data-id="<%= s.id %>">
+        <h2 class="collection-title"><%= s.title._content %></h2>
+        <a href="#"><img src="<%= s.url %>" /></a>
+
+</div>
+<% }); %>
+</div>
+

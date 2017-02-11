@@ -17,6 +17,20 @@ const getLandingData = ({ photosets : { photoset }}) => {
     return {
       ...responseData,
       content : {
+      selectedImages : [
+        'https://unsplash.it/200/300?random',
+        'https://unsplash.it/200/300?random',
+        'https://unsplash.it/200/300?random',
+        'https://unsplash.it/200/300?random',
+        'https://unsplash.it/200/300?random',
+        'https://unsplash.it/200/300?random',
+        'https://unsplash.it/200/300?random',
+        'https://unsplash.it/200/300?random',
+        'https://unsplash.it/200/300?random',
+        'https://unsplash.it/200/300?random',
+        'https://unsplash.it/200/300?random',
+        'https://unsplash.it/200/300?random'
+      ],
       photosets : photoset.map(set => ({
           ...set,
           url : getPhotoshotUrlFromPhoto(set)

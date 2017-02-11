@@ -1,7 +1,9 @@
-
+<div class="collections">
 <% photosets.forEach(function(s) { %>
 <div class="collection-wrap" data-id="<%= s.id %>">
-<h2><%= s.title._content %></h2>
-<img src="<%= s.url %>" />
-<div>
+        <h2 class="collection-title"><%= s.title._content %></h2>
+        <a href="#"><img src="<%= s.url %>" /></a>
+
+</div>
 <% }); %>
+</div>
