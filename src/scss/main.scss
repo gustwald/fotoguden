@@ -125,16 +125,21 @@ img{
 
     max-width: 800px;
     margin: 0 auto;
-   // .inner {
-   //display: flex;
-   // flex-direction: column;
-   // flex-wrap: wrap;
-   // height: 100vw;
-   // /* font-size: 0; */
-   // }
 
     img {
         width: 30%;
         margin: 5px;
+      min-height: 158px;
     }
+}
+
+
+.lazy-img {
+  width: 100%;
+  min-height: 1px;
+  transition: opacity 500ms ease;
+  opacity: 0;
+}
+.lazy-img.b-loaded {
+  opacity: 1;
 }

@@ -13,6 +13,7 @@
   "dependencies": {
     "babel-polyfill": "^6.22.0",
     "babel-register": "^6.22.0",
+    "blazy": "^1.8.2",
     "ejs": "^2.5.5",
     "express": "^4.14.1",
     "fs": "^0.0.1-security",

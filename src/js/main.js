@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import 'whatwg-fetch'
 import Masonry from 'masonry-layout';
-
+import Blazy from 'blazy';
 
 
 const getUrlFromPhoto = photo => {
@@ -10,7 +10,8 @@ const getUrlFromPhoto = photo => {
 }
 
 // Append to collections
-$(() => { 
+$(() => {
+  return;
 	const $collections = $('.collection-wrap');
 
   if($collections.length) {
@@ -56,7 +57,19 @@ const loadHqImages = () => {
 
 
 $(() => {
-  var msnry = new Masonry( '.masonry', {
+  var msnry = new Masonry('.masonry', {
     // options...
+  });
+
+
+  var bLazy = new Blazy({
+    success: function(ele){
+      setTimeout(() => {
+        msnry.layout();
+      }, 200)
+      // Image has loaded
+      // Do your business here
+      console.log('haha')
+    }
   });
 })

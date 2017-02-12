@@ -120,4 +120,14 @@ img {
   margin: 0 auto; }
   .detailWrap img {
     width: 30%;
-    margin: 5px; }
+    margin: 5px;
+    min-height: 158px; }
+
+.lazy-img {
+  width: 100%;
+  min-height: 1px;
+  transition: opacity 500ms ease;
+  opacity: 0; }
+
+.lazy-img.b-loaded {
+  opacity: 1; }
