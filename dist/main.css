@@ -34,7 +34,15 @@ li {
   color: black;
   font-family: 'lato', sans-serif;
   font-size: 16px;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  opacity: 0.5;
+  transition: opacity .5s ease-out;
+  -moz-transition: opacity .5s ease-out;
+  -webkit-transition: opacity .5s ease-out;
+  -o-transition: opacity .5s ease-out; }
+
+.nav-links:hover {
+  opacity: 1; }
 
 .header {
   width: 100%;
@@ -50,7 +58,6 @@ li {
   margin: 0 auto;
   height: auto;
   width: 90%;
-  max-width: 1140px;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row; }
