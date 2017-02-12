@@ -56,6 +56,7 @@ const loadHqImages = () => {
 
 
 
+
 $(() => {
   var msnry = new Masonry('.masonry', {
     // options...
@@ -73,3 +74,12 @@ $(() => {
     }
   });
 })
+
+$( document ).ready(function() {
+	//Scrollknappar
+	$('.next').click(function(){
+		$('html,body').animate({
+		   scrollTop: $(".content").offset().top
+		 }, 500);
+	});
+});
