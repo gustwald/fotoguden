@@ -35,15 +35,15 @@ $(() => {
           .then(response => addImage(response))
     });
   }
-
   loadHqImages();
 
 });
 
 const loadHqImages = () => {
+
   $("img").one("load", function() {
     const $img = $(this);
-
+    console.log('asdasd')
     if(!$img.data('loaded')) {
       const id = $(this).data('imgid');
       $img.attr('src', `/api/photos/${id}`);

@@ -1,6 +1,8 @@
 import { getCollections } from '../flickrApi';
 
 const getPhotoshotUrlFromPhoto = photo => {
+
+  return `/api/photos/${photo.primary}`
   return "http://c1.staticflickr.com/1/" + 
         photo.server + "/" + photo.primary + "_" + photo.secret + "_" + "t.jpg";
 }
