@@ -26,12 +26,52 @@ const getLandingData = ({ photosets : { photoset }}) => {
     }
 }
 
-export default () => new Promise((resolve, reject) => 
+export const collections = (req, res) => new Promise((resolve, reject) =>
     getCollections()
         .then(response => resolve(getLandingData(response)))
 );
 
+const getDetailData = ([{photoset}]) => {
+  const responseData = {
+    metaData : {
+      title : photoset.title,
+    },
+    template : 'collectionDetail',
+    content : undefined
+  };
 
+  // console.log(photoset.photo)
+  // console.log(photos.photosets.photoset)
+
+
+  return {
+    ...responseData,
+    content : {
+      title : photoset.title,
+      photos : photoset.photo.map(photo => ({
+        ...photo,
+        url : `/api/photos/${photo.id}`
+      }))
+    }
+  }
+}
+
+
+export const collectionPage = (res, req) => new Promise((resolve, reject) => {
+    const collectionId = req.params.collectionId;
+
+    return Promise
+        .all([
+          getPhotosetPhotos(collectionId),
+        ])
+        .then(values => {
+          resolve(getDetailData(values));
+        })
+        .catch(e => reject())
+});
+
+
+// Api
 export const collectionDetail = (req, res) => {
     const collectionId = req.params.collectionId;
 
@@ -52,4 +92,5 @@ export const getLargeImage = (req, res) => {
       })
       .catch(e => res.status(404).send('Not found'))
 
-}
+};
+

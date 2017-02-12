@@ -985,6 +985,10 @@ depd@~1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/depd/-/depd-1.1.0.tgz#e1bd82c6aab6ced965b97b88b17ed3e528ca18c3"
 
+desandro-matches-selector@^2.0.0:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/desandro-matches-selector/-/desandro-matches-selector-2.0.2.tgz#717beed4dc13e7d8f3762f707a6d58a6774218e1"
+
 destroy@~1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/destroy/-/destroy-1.0.4.tgz#978857442c44749e4206613e37946205826abd80"
@@ -1050,6 +1054,10 @@ esutils@^2.0.2:
 etag@~1.7.0:
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/etag/-/etag-1.7.0.tgz#03d30b5f67dd6e632d2945d30d6652731a34d5d8"
+
+ev-emitter@^1.0.0:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/ev-emitter/-/ev-emitter-1.0.3.tgz#ee5ef74b6ed28d911b32ddcbfc97867f580937bc"
 
 events@^1.0.0:
   version "1.1.1"
@@ -1157,6 +1165,12 @@ find-up@^1.0.0:
     path-exists "^2.0.0"
     pinkie-promise "^2.0.0"
 
+fizzy-ui-utils@^2.0.0:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/fizzy-ui-utils/-/fizzy-ui-utils-2.0.3.tgz#4e8ae47b30ba2de32ed7a6f4cbc9fb7faf583432"
+  dependencies:
+    desandro-matches-selector "^2.0.0"
+
 for-in@^0.1.5:
   version "0.1.6"
   resolved "https://registry.yarnpkg.com/for-in/-/for-in-0.1.6.tgz#c9f96e89bfad18a545af5ec3ed352a1d9e5b4dc8"
@@ -1241,6 +1255,10 @@ generate-object-property@^1.1.0:
   resolved "https://registry.yarnpkg.com/generate-object-property/-/generate-object-property-1.2.0.tgz#9c0e1c40308ce804f4783618b937fa88f99d50d0"
   dependencies:
     is-property "^1.0.0"
+
+get-size@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/get-size/-/get-size-2.0.2.tgz#555ea98ab8732e0c021e9e23e2219adcbe398e98"
 
 getpass@^0.1.1:
   version "0.1.6"
@@ -1573,6 +1591,13 @@ loose-envify@^1.0.0:
   dependencies:
     js-tokens "^3.0.0"
 
+masonry-layout@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/masonry-layout/-/masonry-layout-4.1.1.tgz#e8c8c6f5a9e621a75203ac4b7000855a36f6753e"
+  dependencies:
+    get-size "^2.0.2"
+    outlayer "^2.1.0"
+
 media-typer@0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/media-typer/-/media-typer-0.3.0.tgz#8710d7af0aa626f8fffa1ce00168545263255748"
@@ -1774,6 +1799,14 @@ os-homedir@^1.0.0:
 os-tmpdir@^1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/os-tmpdir/-/os-tmpdir-1.0.2.tgz#bbe67406c79aa85c5cfec766fe5734555dfa1274"
+
+outlayer@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/outlayer/-/outlayer-2.1.0.tgz#83b7beefc19becd3278c8ade988d268788d6f93d"
+  dependencies:
+    ev-emitter "^1.0.0"
+    fizzy-ui-utils "^2.0.0"
+    get-size "^2.0.2"
 
 pako@~0.2.0:
   version "0.2.9"

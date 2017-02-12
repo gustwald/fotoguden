@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import 'whatwg-fetch'
+import Masonry from 'masonry-layout';
 
 
 
@@ -25,17 +26,17 @@ $(() => {
                 `<img data-imgid="${photo.id}" src="${getUrlFromPhoto(photo)}" />`
             )
         );
-        loadHqImages();
+        // loadHqImages();
       };
 
-      loadHqImages();
+      // loadHqImages();
 
       fetch(`/api/collections/${id}`)
           .then(response => response.json())
           .then(response => addImage(response))
     });
   }
-  loadHqImages();
+  // loadHqImages();
 
 });
 
@@ -43,7 +44,7 @@ const loadHqImages = () => {
 
   $("img").one("load", function() {
     const $img = $(this);
-    console.log('asdasd')
+    // console.log('asdasd')
     if(!$img.data('loaded')) {
       const id = $(this).data('imgid');
       $img.attr('src', `/api/photos/${id}`);
@@ -51,3 +52,11 @@ const loadHqImages = () => {
     }
   })
 }
+
+
+
+$(() => {
+  var msnry = new Masonry( '.masonry', {
+    // options...
+  });
+})

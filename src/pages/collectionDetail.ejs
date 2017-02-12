@@ -1,0 +1,12 @@
+<h1><%= title %></h1>
+
+
+<div class="detailWrap">
+<div class="inner masonry">
+
+<% photos.forEach(function(s) { %>
+<img src="<%= s.url %>" />
+<% }); %>
+
+</div>
+</div>

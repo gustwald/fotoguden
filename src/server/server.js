@@ -6,7 +6,7 @@ import request from 'request';
 import { renderFile } from 'ejs';
 import { getCollections } from '../flickrApi';
 import landing from './landing';
-import collections, { collectionDetail, getLargeImage } from './collections';
+import { collections, collectionDetail, getLargeImage, collectionPage } from './collections';
 
 const PROD = process.env.NODE_ENV === 'production';
 
@@ -20,31 +20,28 @@ app.use('/images', express.static('src/img'));
 app.set('views', path.join(__dirname, '../pages'));
 app.engine('html', renderFile);
 
-// type ResData = {
-//   metaData : ?Object,
-//   content : Object
-// };
 
-const page = (res, getData) => {
-  getData().then(data => {
-    const { metaData, content, template } = data;
+const page = (res, req, getData) => {
+  getData(res, req)
+    .then(data => {
+      const { metaData, content, template } = data;
 
-    res.render('index.html', {
-      template : template,
-      ...content
-    });
-  })
+      res.render('index.html', {
+        template : template,
+        title : metaData.title,
+        ...content
+      });
+    })
+    .catch(e => res.status(404).send('Not found'))
 };
 
 
 
 // Routes
-app.get('/', (req, res) => page(res, landing));
-app.get('/collections', (req, res) => page(res, collections));
+app.get('/', (req, res) => page(res, req, landing));
+app.get('/collections', (req, res) => page(res, req, collections));
+app.get('/collections/:collectionId', (req, res) => page(res, req, collectionPage));
 
-app.get('/collections/:collectionId', (req, res) => page(res, () => {
-
-}));
 
 // Api
 router.get('/collections/:collectionId', (req, res) => collectionDetail(req, res));
