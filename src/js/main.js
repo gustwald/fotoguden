@@ -80,6 +80,6 @@ $( document ).ready(function() {
 	$('.next').click(function(){
 		$('html,body').animate({
 		   scrollTop: $(".content").offset().top
-		 }, 500);
+		 }, 800);
 	});
 });
