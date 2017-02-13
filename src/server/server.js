@@ -6,7 +6,7 @@ import request from 'request';
 import { renderFile } from 'ejs';
 import { getCollections } from '../flickrApi';
 import landing from './landing';
-import { collections, collectionDetail, getLargeImage, collectionPage } from './collections';
+import { collections, collectionDetail, getImage, collectionPage } from './collections';
 
 const PROD = process.env.NODE_ENV === 'production';
 
@@ -45,7 +45,7 @@ app.get('/collections/:collectionId', (req, res) => page(res, req, collectionPag
 
 // Api
 router.get('/collections/:collectionId', (req, res) => collectionDetail(req, res));
-router.get('/photos/:photoId', (req, res) => getLargeImage(req, res));
+router.get('/photos/:photoId', (req, res) => getImage(req, res));
 
 
 

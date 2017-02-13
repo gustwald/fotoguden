@@ -1,7 +1,7 @@
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="/static/main.css">
-        <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Lato:300,400" rel="stylesheet">
         <link href="/static/zoom.css" rel="stylesheet" type="text/css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <title><%= title %></title>
@@ -10,34 +10,14 @@
 
     <body>
         <div class="container">
-            <header class="header">
-                <div class="title">
-                    <nav class="navigation">
-                        <ul class="nav">
-                            <a class="nav-links" href="#"><li>Start</li></a>
-                            <a class="nav-links" href="#"><li>Albums</li></a>
-                            <a class="nav-links" href="#"><li>Om</li></a>
-                        </ul>
-                    </nav>
-                    <h1 class="title-name">Eril Nilsson</h1>
-                </div>
-                <a class="next" href="#"><div class="arrow">
-                </div></a>
-            </header>
-            <section class="content">
-            <div class="photo-grid">
-                <div class="photo-grid-children">
-                    <p class="photo-grid-descripion"></p>
-                </div>
-            </div>
+
              <%- include(template) %>
         </div>
        
 
 
-
+        <script src="https://npmcdn.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
         <script src="/static/main.min.js"></script>
-        <script src="/static/zoom.js"></script>
         <script src="/static/transition.js"></script>
         </section>
     </body>

@@ -1,0 +1,61 @@
+.detailHeader {
+    padding: 200px 0 300px 0;
+    background-size: cover;
+    position: relative;
+    margin-bottom: 80px;
+    background-position: center;
+    text-align: center;
+
+     @include bm(0, 700px) {
+        padding: 100px 0 150px 0;
+        margin-bottom: 40px;
+    }
+
+    &:after {
+        content :"";
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        z-index: 5;
+        background-color: rgba(0, 0,0,.5);
+        position: absolute
+    }
+
+    h1 {
+        position: relative;
+        z-index: 10;
+    }
+
+    svg {
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+        left: 0;
+        z-index: 20;
+    }
+}
+
+
+
+
+.detailWrap {
+
+    max-width: 90%;
+    margin: 0 auto;
+
+    img {
+        width: 100%;
+        cursor: pointer;
+        margin: 2px;
+        
+        @include b(700px) {
+            width: 48%;
+        }
+
+        @include b(1100px) {
+            width: 30%;
+        }
+
+    }
+}

@@ -2,7 +2,7 @@ import $ from 'jquery';
 import 'whatwg-fetch'
 import Masonry from 'masonry-layout';
 import Blazy from 'blazy';
-
+import Intense from './Intense';
 
 const getUrlFromPhoto = photo => {
   return "http://farm" + photo.farm + ".static.flickr.com/" +
@@ -41,41 +41,26 @@ $(() => {
 
 });
 
-const loadHqImages = () => {
-
-  $("img").one("load", function() {
-    const $img = $(this);
-    // console.log('asdasd')
-    if(!$img.data('loaded')) {
-      const id = $(this).data('imgid');
-      $img.attr('src', `/api/photos/${id}`);
-      $img.data('loaded', 1)
-    }
-  })
-}
-
-
-
 
 $(() => {
-  var msnry = new Masonry('.masonry', {
+  
+  $('.detailWrap .inner').imagesLoaded(() => {
+ var msnry = new Masonry('.masonry', {
     // options...
+    fitWidth: true
   });
+  })
+ 
 
 
-  var bLazy = new Blazy({
-    success: function(ele){
-      setTimeout(() => {
-        msnry.layout();
-      }, 200)
-      // Image has loaded
-      // Do your business here
-      console.log('haha')
-    }
-  });
 })
 
 $( document ).ready(function() {
+  var element = document.querySelectorAll( '.intense' );
+  console.log(element)
+    Intense( element );
+
+
 	//Scrollknappar
 	$('.next').click(function(){
 		$('html,body').animate({

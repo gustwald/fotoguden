@@ -31,27 +31,30 @@ export const collections = (req, res) => new Promise((resolve, reject) =>
         .then(response => resolve(getLandingData(response)))
 );
 
-const getDetailData = ([{photoset}]) => {
+const getDetailData = ([collections, {photoset}], id) => {
+  const title = photoset.title.replace(/[0-9]/g, '');
+
   const responseData = {
     metaData : {
-      title : photoset.title,
+      title : title,
     },
     template : 'collectionDetail',
     content : undefined
   };
 
-  // console.log(photoset.photo)
-  // console.log(photos.photosets.photoset)
 
+  const selectedCoverPhoto = collections.photosets.photoset.filter(set => set.id == id)[0];
+  const thePhoto = photoset.photo.filter(photo => photo.id == selectedCoverPhoto.primary)[0];
 
   return {
     ...responseData,
     content : {
-      title : photoset.title,
+      title : title,
       photos : photoset.photo.map(photo => ({
         ...photo,
         url : `/api/photos/${photo.id}`
-      }))
+      })),
+      headerPhoto : `/api/photos/${thePhoto.id}?size=Large`
     }
   }
 }
@@ -59,13 +62,14 @@ const getDetailData = ([{photoset}]) => {
 
 export const collectionPage = (res, req) => new Promise((resolve, reject) => {
     const collectionId = req.params.collectionId;
-
+    
     return Promise
         .all([
+          getCollections(),
           getPhotosetPhotos(collectionId),
         ])
         .then(values => {
-          resolve(getDetailData(values));
+          resolve(getDetailData(values, collectionId));
         })
         .catch(e => reject())
 });
@@ -82,12 +86,16 @@ export const collectionDetail = (req, res) => {
 }
 
 
-export const getLargeImage = (req, res) => {
+export const getImage = (req, res) => {
   const photoId = req.params.photoId;
+  const query = req.query && req.query.size;
+  const sizes = ["Square", "Large Square", "Thumbnail", "Small", "Small 320", "Medium", "Medium 640", "Medium 800", "Large", "Large 1600", "Large 2048", "Original"];
+  const selectedSize = sizes.includes(query) ? query : 'Original';
 
   getPhotoSizes(photoId)
       .then(({ sizes : { size }}) => {
-          const url = size.find(s => s.label == 'Large 2048').source;
+        console.log(size)
+          const url = size.find(s => s.label == selectedSize).source;
           request.get(url).pipe(res);
       })
       .catch(e => res.status(404).send('Not found'))

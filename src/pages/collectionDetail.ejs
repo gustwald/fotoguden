@@ -1,11 +1,19 @@
-<h1><%= title %></h1>
+<header class="detailHeader" style="background-image:url(<%= headerPhoto %>)">
+    <div class="grid">
+        <h1><%= title %></h1>
+    </div>
+
+    <svg viewBox="0 0 1280 110" preserveAspectRatio="none" id="header-curve">
+      <path d="M1280 3.9V110H0C194 71.33 662-19.9 1280 3.9z" fill="#fff"></path>
+    </svg>
+</header>
 
 
 <div class="detailWrap">
 <div class="inner masonry">
 
 <% photos.forEach(function(s) { %>
-<img class="b-lazy lazy-img" data-action="zoom" data-src="<%= s.url %>" />
+    <img class="intense" data-image="<%= s.url %>?size=Large 2048"  src="<%= s.url %>?size=Medium" />
 <% }); %>
 
 </div>

@@ -1,3 +1,25 @@
+            <header class="header">
+                <div class="title">
+                    <nav class="navigation">
+                        <ul class="nav">
+                            <a class="nav-links" href="#"><li>Start</li></a>
+                            <a class="nav-links" href="#"><li>Albums</li></a>
+                            <a class="nav-links" href="#"><li>Om</li></a>
+                        </ul>
+                    </nav>
+                    <h1 class="title-name">Eril Nilsson</h1>
+                </div>
+                <a class="next" href="#"><div class="arrow">
+                </div></a>
+            </header>
+            <section class="content">
+            <div class="photo-grid">
+                <div class="photo-grid-children">
+                    <p class="photo-grid-descripion"></p>
+                </div>
+            </div>
+
+
 <div class="grid-wrapper">
 <% selectedImages.forEach(function(s) { %>
 <div class="grid-children">
@@ -10,7 +32,7 @@
 <% photosets.forEach(function(s) { %>
 <div class="collection-wrap" data-id="<%= s.id %>">
         <h2 class="collection-title"><%= s.title._content %></h2>
-        <a href="/collections/<%= s.id %>"><img class="b-lazy lazy-img" data-src="<%= s.url %>" /></a>
+        <a href="/collections/<%= s.id %>"><img src="<%= s.url %>" /></a>
 
 </div>
 <% }); %>
