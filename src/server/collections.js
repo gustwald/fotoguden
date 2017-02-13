@@ -45,7 +45,7 @@ const getDetailData = ([collections, {photoset}], id) => {
 
   const selectedCoverPhoto = collections.photosets.photoset.filter(set => set.id == id)[0];
   const thePhoto = photoset.photo.filter(photo => photo.id == selectedCoverPhoto.primary)[0];
-
+  
   return {
     ...responseData,
     content : {

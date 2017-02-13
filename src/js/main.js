@@ -1,4 +1,3 @@
-import $ from 'jquery';
 import 'whatwg-fetch'
 import Masonry from 'masonry-layout';
 import Blazy from 'blazy';
@@ -45,10 +44,14 @@ $(() => {
 $(() => {
   
   $('.detailWrap .inner').imagesLoaded(() => {
- var msnry = new Masonry('.masonry', {
+    var msnry = new Masonry('.masonry', {
     // options...
-    fitWidth: true
+     percentPosition: true,
+     itemSelector: '.intense',
+      //  columnWidth : 300,
+        gutterWidth: 20
   });
+  
   })
  
 
