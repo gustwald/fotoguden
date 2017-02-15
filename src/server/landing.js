@@ -33,7 +33,7 @@ const getLandingData = ({ photosets : { photoset }}) => {
         'https://unsplash.it/200/300?random',
         'https://unsplash.it/200/300?random'
       ],
-      photosets : photoset.map(set => ({
+      photosets : photoset.slice(0, 5).map(set => ({
           ...set,
           url : getPhotoshotUrlFromPhoto(set)
         }))

@@ -1,6 +1,5 @@
 import 'whatwg-fetch'
 import Masonry from 'masonry-layout';
-import Blazy from 'blazy';
 import Intense from './Intense';
 
 const getUrlFromPhoto = photo => {
@@ -36,13 +35,14 @@ $(() => {
           .then(response => addImage(response))
     });
   }
-  // loadHqImages();
 
 });
 
 
 $(() => {
-  
+
+  if($('.detailWrap').length == 0) return;
+
   $('.detailWrap .inner').imagesLoaded(() => {
     var msnry = new Masonry('.masonry', {
     // options...
@@ -60,9 +60,9 @@ $(() => {
 
 $( document ).ready(function() {
   var element = document.querySelectorAll( '.intense' );
-  console.log(element)
-    Intense( element );
-
+  if(element.length) {
+    Intense(element);
+  }
 
 	//Scrollknappar
 	$('.next').click(function(){
@@ -71,3 +71,59 @@ $( document ).ready(function() {
 		 }, 800);
 	});
 });
+
+
+
+const loadMoreCollections = (offset) => {
+  return fetch(`/api/collections?offset=${offset}`)
+      .then(response => response.json())
+};
+
+
+const getCollectionWrap = (item) => `
+  <div class="collection-wrap" data-id="${item.id}">
+        <h2 class="collection-title">${item.title._content}</h2>
+        <a href="/collections/${item.id}"><img src="${item.url}?size=Large 1600" /></a>
+
+</div>
+`
+
+// Infinte scroll
+$(() => {
+  const $theContainer = $('.collections');
+
+  const sr = ScrollReveal({ delay: 1000, });
+  sr.reveal('.collection-wrap', { container: $theContainer[0] });
+
+
+  let loadingCollections = false;
+
+  const onScroll = () => {
+    const $window = $(window);
+    var tweak = 10;
+
+
+    if (( $window.scrollTop() >= $theContainer.height() - $window.height() - tweak) && !loadingCollections) {
+      loadingCollections = true;
+
+      loadMoreCollections($('.collection-wrap').length)
+          .then(response => {
+            console.log(response);
+
+            const html = response.items.map(item => getCollectionWrap(item)).join('');
+            $theContainer.append(html);
+
+            sr.sync();
+
+
+            loadingCollections = false;
+
+            if(response.last) {
+              $(window).off('scroll', onScroll);
+            }
+          })
+    }
+  }
+
+  $(window).scroll(onScroll);
+})

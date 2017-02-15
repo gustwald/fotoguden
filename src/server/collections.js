@@ -2,9 +2,10 @@ import { getCollections, getPhotosetPhotos, getPhotoSizes } from '../flickrApi';
 import request from 'request';
 
 const getPhotoshotUrlFromPhoto = photo => {
-  return "http://c1.staticflickr.com/1/" + 
-        photo.server + "/" + photo.primary + "_" + photo.secret + "_" + "t.jpg";
+  return `/api/photos/${photo.primary}`
 }
+
+
 
 const getLandingData = ({ photosets : { photoset }}) => {
     const responseData = {
@@ -102,3 +103,27 @@ export const getImage = (req, res) => {
 
 };
 
+
+export const collectionPager = (req, res) => {
+  const offset = parseInt(req.query && req.query.offset) || 0;
+
+
+  getCollections()
+      .then(response => {
+        const { photosets : { photoset } } = response;
+        const totalLength = photoset.length;
+        const count = 5;
+
+
+        const pager = {
+          items : photoset.slice(offset, offset + count).map(set => ({
+            ...set,
+            url : getPhotoshotUrlFromPhoto(set)
+          })),
+          last : totalLength < (offset + count)
+        };
+
+        res.json(pager);
+
+      })
+}

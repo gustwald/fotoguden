@@ -32,7 +32,7 @@
 <% photosets.forEach(function(s) { %>
 <div class="collection-wrap" data-id="<%= s.id %>">
         <h2 class="collection-title"><%= s.title._content %></h2>
-        <a href="/collections/<%= s.id %>"><img src="<%= s.url %>" /></a>
+        <a href="/collections/<%= s.id %>"><img src="<%= s.url %>?size=Large 1600" /></a>
 
 </div>
 <% }); %>
