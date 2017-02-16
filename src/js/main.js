@@ -17,7 +17,7 @@ $(() => {
         percentPosition: true,
         itemSelector: '.intense',
           //  columnWidth : 300,
-            gutterWidth: 20
+            gutter: 6
       });
     })
   }
@@ -64,7 +64,7 @@ const loadMoreCollections = (offset) => {
 const getCollectionWrap = (item) => `
   <div class="collection-wrap" data-id="${item.id}">
         <h2 class="collection-title">${item.title._content}</h2>
-        <a href="/collections/${item.id}"><img src="${item.url}?size=Large 1600" /></a>
+        <a href="/albums/${item.id}"><img src="${item.url}?size=Large 1600" /></a>
 
 </div>
 `

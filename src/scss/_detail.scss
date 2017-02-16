@@ -44,17 +44,20 @@
     max-width: 90%;
     margin: 0 auto;
 
+
     img {
         width: 100%;
+         margin-bottom: 6px;
         cursor: pointer;
-        margin: 2px;
         
         @include b(700px) {
-            width: 48%;
+           width: calc(50% - 4px);
         }
 
         @include b(1100px) {
-            width: 30%;
+            width: calc((100% / 3) - 4px);
+            margin-bottom: 6px;
+            
         }
 
     }

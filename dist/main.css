@@ -33,14 +33,15 @@
   margin: 0 auto; }
   .detailWrap img {
     width: 100%;
-    cursor: pointer;
-    margin: 2px; }
+    margin-bottom: 6px;
+    cursor: pointer; }
     @media (min-width: 700px) {
       .detailWrap img {
-        width: 48%; } }
+        width: calc(50% - 4px); } }
     @media (min-width: 1100px) {
       .detailWrap img {
-        width: 30%; } }
+        width: calc((100% / 3) - 4px);
+        margin-bottom: 6px; } }
 
 * {
   padding: 0;
@@ -122,7 +123,7 @@ li {
 .collections {
   margin: 0 auto;
   height: auto;
-  max-width: 1140px;
+  max-width: 1540px;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row; }
@@ -223,7 +224,7 @@ img {
   opacity: 1; }
 
 .grid {
-  max-width: 1140px;
+  max-width: 1540px;
   margin: 0 auto; }
 
 h1 {

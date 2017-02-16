@@ -20,15 +20,17 @@
     </div>
 
 <div class="grid">
-<div class="grid-wrapper">
-<% selectedImages.forEach(function(s) { %>
-<div class="grid-children">
-    <img class="intense" data-image="<%= s %>?size=Large 2048" src="<%= s %>?size=Large" />
+    <div class="grid-wrapper">
+    <% selectedImages.forEach(function(s) { %>
+    <div class="grid-children">
+        <img class="intense" data-image="<%= s %>?size=Large 2048" src="<%= s %>?size=Large" />
+    </div>
+    <% }); %>
+    </div>
 </div>
-<% }); %>
-</div>
-</div>
+
 
 
 
  <%- include collectionList %>
+<a href="/albums">All albums</a>
