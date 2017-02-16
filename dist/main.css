@@ -234,7 +234,8 @@ h1 {
   color: white; }
 
 .intense {
-  transition: opacity 0.3s ease; }
+  transition: opacity 0.3s ease;
+  cursor: pointer; }
 
 .loading-intense {
   opacity: 0.3; }

@@ -20,14 +20,14 @@ const getLandingData = ({ photosets : { photoset }}) => {
       ...responseData,
       content : {
       selectedImages : [
-        'http://localhost:3000/api/photos/29140268763?size=Large',
-        'http://localhost:3000/api/photos/29653164632?size=Large',
-        'http://localhost:3000/api/photos/28851867815?size=Large',
-        'http://localhost:3000/api/photos/28746896672?size=Large',
-        'http://localhost:3000/api/photos/28236880103?size=Large',
-        'http://localhost:3000/api/photos/32007398410?size=Large',
-        'http://localhost:3000/api/photos/27344909850?size=Large',
-        'http://localhost:3000/api/photos/32007391890?size=Medium',
+        'http://localhost:3000/api/photos/29140268763',
+        'http://localhost:3000/api/photos/29653164632',
+        'http://localhost:3000/api/photos/28851867815',
+        'http://localhost:3000/api/photos/28746896672',
+        'http://localhost:3000/api/photos/28236880103',
+        'http://localhost:3000/api/photos/32007398410',
+        'http://localhost:3000/api/photos/27344909850',
+        'http://localhost:3000/api/photos/32007391890',
       ],
       photosets : photoset.slice(0, 5).map(set => ({
           ...set,
