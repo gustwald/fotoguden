@@ -39,8 +39,8 @@ const page = (res, req, getData) => {
 
 // Routes
 app.get('/', (req, res) => page(res, req, landing));
-app.get('/collections', (req, res) => page(res, req, collections));
-app.get('/collections/:collectionId', (req, res) => page(res, req, collectionPage));
+app.get('/albums', (req, res) => page(res, req, collections));
+app.get('/albums/:collectionId', (req, res) => page(res, req, collectionPage));
 
 
 // Api

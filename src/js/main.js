@@ -38,24 +38,36 @@ $(() => {
 
 });
 
-
 $(() => {
 
-  if($('.detailWrap').length == 0) return;
+  if($('.detailWrap').length > 0) {
 
-  $('.detailWrap .inner').imagesLoaded(() => {
-    var msnry = new Masonry('.masonry', {
-    // options...
-     percentPosition: true,
-     itemSelector: '.intense',
-      //  columnWidth : 300,
-        gutterWidth: 20
-  });
-  
-  })
+    $('.detailWrap .inner').imagesLoaded(() => {
+        var msnry = new Masonry('.masonry', {
+        // options...
+        percentPosition: true,
+        itemSelector: '.intense',
+          //  columnWidth : 300,
+            gutterWidth: 20
+      });
+    })
+  }
  
 
+  if($('.grid-wrapper').length > 0) {
 
+    $('.grid-wrapper').imagesLoaded(() => {
+      var msnry = new Masonry('.grid-wrapper', {
+      // options...
+      // percentPosition: true,
+      itemSelector: '.grid-children',
+        //  columnWidth : 300,
+          gutter: 10
+    });
+  })
+
+  }
+  
 })
 
 $( document ).ready(function() {
@@ -98,6 +110,8 @@ $(() => {
 
   let loadingCollections = false;
 
+  if($('.albums').length == 0) return;
+
   const onScroll = () => {
     const $window = $(window);
     var tweak = 10;
@@ -108,15 +122,21 @@ $(() => {
 
       loadMoreCollections($('.collection-wrap').length)
           .then(response => {
-            console.log(response);
+            
+            response.items.forEach((item, i) => {
+              setTimeout(() => {
+                  const html = getCollectionWrap(item);
+                  $theContainer.append(html);
+                   sr.sync();
 
-            const html = response.items.map(item => getCollectionWrap(item)).join('');
-            $theContainer.append(html);
+                   if(i + 1 == response.items.length) {
+loadingCollections = false;
+                   }
+              }, i * 300);
+            })
 
-            sr.sync();
 
-
-            loadingCollections = false;
+            
 
             if(response.last) {
               $(window).off('scroll', onScroll);

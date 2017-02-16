@@ -86,6 +86,7 @@ li{
     height: 100vh;
     background-image: url('/images/bg.jpg');
     background-size: cover;
+    background-position: center;
 }
 .content{
     width: 100%;
@@ -102,9 +103,7 @@ li{
 .collection-wrap{
   visibility: hidden;
     width: 100%;
-    height: auto;
     margin: 20px;
-    max-height: 400px;
     overflow: hidden;
     position: relative;
 
@@ -154,12 +153,38 @@ img{
 
 .grid-wrapper{
     display: flex;
-    flex-wrap: wrap;
+    // flex-wrap: wrap;
     justify-content: center;
     width: 100%;
+    margin: 130px 0;
 }
 .grid-children{
-    margin: 0;
+    // margin: 10px;
+
+    width: calc(50% - 5px);
+    margin-bottom: 10px;
+
+    img {
+        width: 100%;
+    }
+
+
+    &:nth-child(3n) {
+        width: 100%;
+    }
+
+    //   &:nth-child(3) {
+    //     width: 25%;
+    // }
+
+    // &:nth-child(4) {
+    //     width: 25%;
+    // }
+
+    // &:nth-child(2) {
+    //     width: 50%;
+    // }
+
 }
 .arrow{
     position: absolute;

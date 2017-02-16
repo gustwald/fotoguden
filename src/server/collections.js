@@ -7,19 +7,19 @@ const getPhotoshotUrlFromPhoto = photo => {
 
 
 
-const getLandingData = ({ photosets : { photoset }}) => {
+const getAlbumData = ({ photosets : { photoset }}) => {
     const responseData = {
       metaData : {
-        title : 'Collections',
+        title : 'Album',
       },
-      template : 'collections',
+      template : 'album',
       content : undefined
     };
 
     return {
       ...responseData,
       content : {
-      photosets : photoset.map(set => ({
+      photosets : photoset.slice(0, 5).map(set => ({
           ...set,
           url : getPhotoshotUrlFromPhoto(set)
         }))
@@ -29,7 +29,7 @@ const getLandingData = ({ photosets : { photoset }}) => {
 
 export const collections = (req, res) => new Promise((resolve, reject) =>
     getCollections()
-        .then(response => resolve(getLandingData(response)))
+        .then(response => resolve(getAlbumData(response)))
 );
 
 const getDetailData = ([collections, {photoset}], id) => {
