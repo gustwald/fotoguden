@@ -8,6 +8,8 @@ ADD . /usr/src/app
 WORKDIR /usr/src/app
 
 RUN npm install -g babel-cli
+
+RUN yarn
 # Expose the app port
 EXPOSE 4700
 
