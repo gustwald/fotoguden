@@ -90,13 +90,16 @@ h2 {
   text-transform: uppercase; }
 
 .title-name {
-  font-size: 72px;
+  font-size: 48px;
   position: absolute;
   top: 40%;
   width: 100%;
   text-align: center;
   color: white;
   text-transform: uppercase; }
+  @media (min-width: 700px) {
+    .title-name {
+      font-size: 72px; } }
 
 nav {
   position: absolute;
@@ -117,9 +120,10 @@ li {
   text-decoration: none;
   color: black;
   font-family: 'lato', sans-serif;
-  font-size: 16px;
+  font-weight: 800;
+  font-size: 20px;
   text-transform: uppercase;
-  opacity: 0.5;
+  opacity: 1;
   transition: opacity .5s ease-out;
   -moz-transition: opacity .5s ease-out;
   -webkit-transition: opacity .5s ease-out;

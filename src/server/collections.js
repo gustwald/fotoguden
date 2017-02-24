@@ -95,7 +95,6 @@ export const getImage = (req, res) => {
 
   getPhotoSizes(photoId)
       .then(({ sizes : { size }}) => {
-        console.log(size)
           const url = size.find(s => s.label == selectedSize).source;
           request.get(url).pipe(res);
       })
