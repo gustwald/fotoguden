@@ -8,6 +8,7 @@ ADD . /usr/src/app
 WORKDIR /usr/src/app
 
 RUN npm install -g babel-cli
+RUN npm install -g yarn
 
 RUN yarn
 # Expose the app port
