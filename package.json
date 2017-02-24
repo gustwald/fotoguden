@@ -12,6 +12,11 @@
     "prod": "babel-node src/server/server.babel.js"
   },
   "dependencies": {
+    "babel-loader": "^6.2.10",
+    "babel-plugin-syntax-flow": "^6.18.0",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-stage-0": "^6.22.0",
+    "file-loader": "^0.10.0",
     "babel-cli": "^6.23.0",
     "babel-polyfill": "^6.22.0",
     "babel-register": "^6.22.0",
@@ -29,11 +34,4 @@
     "webpack": "1.13",
     "whatwg-fetch": "^2.0.2"
   },
-  "devDependencies": {
-    "babel-loader": "^6.2.10",
-    "babel-plugin-syntax-flow": "^6.18.0",
-    "babel-preset-es2015": "^6.22.0",
-    "babel-preset-stage-0": "^6.22.0",
-    "file-loader": "^0.10.0"
-  }
 }
