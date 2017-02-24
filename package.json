@@ -8,9 +8,11 @@
   "scripts": {
     "start": "nodemon src/server/server.babel.js",
     "css": "node-sass --include-path scss src/scss/main.scss dist/main.css --watch",
-    "js": "babel src/js/main.js --watch --out-file dist/main.min.js"
+    "js": "babel src/js/main.js --watch --out-file dist/main.min.js",
+    "prod": "babel-node src/server/server.babel.js"
   },
   "dependencies": {
+    "babel-cli": "^6.23.0",
     "babel-polyfill": "^6.22.0",
     "babel-register": "^6.22.0",
     "blazy": "^1.8.2",

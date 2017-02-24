@@ -8,7 +8,7 @@ ADD . /usr/src/app
 WORKDIR /usr/src/app
 
 RUN npm install -g nodemon
-
+RUN npm install -g babel-cli
 # Expose the app port
 EXPOSE 4700
 
