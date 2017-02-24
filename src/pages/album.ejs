@@ -1,4 +1,15 @@
-<h1>album</h1>
+<%- include nav %>
+
+<header class="detailHeader" style="background-image:url(/api/photos/27900947644?size=Large)">
+    <div class="grid">
+        <h1>Albums</h1>
+    </div>
+
+    <svg viewBox="0 0 1280 110" preserveAspectRatio="none" id="header-curve">
+        <path d="M1280 3.9V110H0C194 71.33 662-19.9 1280 3.9z" fill="#fff"></path>
+    </svg>
+</header>
+
 <div class="albums">
  <%- include collectionList %>
 </div>

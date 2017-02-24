@@ -116,3 +116,20 @@ loadingCollections = false;
 
   $(window).scroll(onScroll);
 })
+
+
+$(() => {
+  var waypoint = new Waypoint({
+    element: document.getElementById('waypoint'),
+    handler: function(direction) {
+
+      if(direction == 'up') {
+        $('.startNav').removeClass('visible')
+      }
+      else {
+        $('.startNav').addClass('visible')
+      }
+
+    }
+  })
+})

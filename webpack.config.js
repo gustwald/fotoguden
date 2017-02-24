@@ -21,7 +21,11 @@ module.exports = {
             presets: [ 'es2015', 'stage-0']
         }
       },
-      { test : /\.json/, loader : 'file-loader' }
+      { test : /\.json/, loader : 'file-loader' },
+      {
+        test: /\.(eot|svg|ttf|woff|woff2)$/,
+        loader: 'file-loader?name=public/fonts/[name].[ext]'
+      }
     ]
   },
   // target : 'node',

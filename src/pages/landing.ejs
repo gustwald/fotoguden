@@ -1,36 +1,40 @@
+<div class="startNav">
+    <%- include nav %>
+</div>
+
     <header class="header">
         <div class="title">
             <nav class="navigation">
                 <ul class="nav">
-                    <a class="nav-links" href="#"><li>Start</li></a>
-                    <a class="nav-links" href="#"><li>Albums</li></a>
-                    <a class="nav-links" href="#"><li>Om</li></a>
+                    <a class="nav-links" href="/"><li>Home</li></a>
+                    <a class="nav-links" href="/albums"><li>Albums</li></a>
+                    <a class="nav-links" href="/about"><li>Om</li></a>
                 </ul>
             </nav>
-            <h1 class="title-name">Erik Nilsson</h1>
+            <h1 class="title-name" id="waypoint">Fotoguden</h1>
         </div>
         <a class="next" href="#"><div class="arrow">
         </div></a>
     </header>
-    <section class="content">
-    <div class="photo-grid">
-        <div class="photo-grid-children">
-            <p class="photo-grid-descripion"></p>
-        </div>
-    </div>
+    <main class="content">
 
-<div class="grid">
-    <div class="grid-wrapper">
-    <% selectedImages.forEach(function(s) { %>
-    <div class="grid-children">
-        <img class="intense" data-image="<%= s %>?size=Large 2048" src="<%= s %>?size=Large" />
-    </div>
-    <% }); %>
-    </div>
-</div>
+        <section>
+            <h2>Selected favorites</h2>
+            <div class="grid">
+                <div class="grid-wrapper">
+                    <% selectedImages.forEach(function(s) { %>
+                    <div class="grid-children">
+                        <img class="intense" data-image="<%= s %>?size=Large 2048" src="<%= s %>?size=Large" />
+                    </div>
+                    <% }); %>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Latest albums</h2>
+            <%- include collectionList %>
+        </section>
 
 
-
-
- <%- include collectionList %>
-<a href="/albums">All albums</a>
+    </main>

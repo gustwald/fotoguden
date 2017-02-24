@@ -1,4 +1,14 @@
 $grid-width: 1540px;
+$f-bold : 'proxima_nova';
+
+@font-face {
+  font-family: 'proxima_nova';
+  src: url('/fonts/proxima-nova.woff2') format('woff2'),
+  url('/fonts/proxima-nova.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
 
 @mixin b($width) {
     @media (min-width: $width) { @content; }
@@ -16,20 +26,60 @@ $grid-width: 1540px;
     padding: 0;
     margin: 0;
 }
-body {
 
-}
 a{
     display: block;
 }
+
+section {
+  margin: 130px 0;
+}
+
+main {
+  max-width: $grid-width;
+  margin: 0 auto;
+}
+
+html {
+  font-family: 'lato', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+p {
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-family: $f-bold, sans-serif;
+  font-weight: 300;
+  font-size: 64px;
+  text-align: center;
+  margin: 0;
+  color: white;
+  text-transform: uppercase;
+}
+
+
+h2 {
+  font-family: $f-bold, sans-serif;
+  margin: 0 auto;
+  font-size: 48px;
+  text-align: center;
+  margin: 0 0 40px 0;
+  text-transform: uppercase;
+
+}
+
 .title-name{
-    font-family: 'lato', sans-serif;
-    font-size: 48px;
+    font-size: 72px;
     position: absolute;
     top: 40%;
     width: 100%;
     text-align: center;
-    color: black;
+
+    color: white;
     text-transform: uppercase;
 }
 nav{
@@ -66,7 +116,7 @@ li{
   height: 1px;
   bottom: -5;
   left: 0;
-  background-color: #000;
+  background-color: #fff;
   visibility: hidden;
   -webkit-transform: scaleX(0);
   transform: scaleX(0);
@@ -156,7 +206,6 @@ img{
     // flex-wrap: wrap;
     justify-content: center;
     width: 100%;
-    margin: 130px 0;
 }
 .grid-children{
     // margin: 10px;
@@ -232,15 +281,9 @@ img{
 .grid {
     max-width: $grid-width;
     margin: 0 auto;
+  padding: 0 20px;
 }
 
-h1 {
-    font-family: 'Lato', sans-serif;
-    font-weight: 300;
-    font-size: 48px;
-    margin: 0;
-    color: white;
-}
 
 .intense {
     transition: opacity 0.3s ease;
@@ -303,5 +346,73 @@ h1 {
   }
   100% {
     opacity: 1;
+  }
+}
+
+.splits {
+  @include b(900px) {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.split {
+  margin-bottom: 40px;
+  @include b(900px) {
+    width: 48%;
+    margin-bottom: 0;
+  }
+}
+
+
+
+.mainnav {
+  height: 64px;
+
+  .fixed {
+    position: fixed;
+    background-color: white;
+    padding: 20px 0;
+    left: 0;
+    top: 0;
+    z-index: 300;
+    width: 100%;
+    transition: transform 0.25s ease;
+  }
+
+  .inner {
+    display: flex;
+  }
+
+  .link {
+    color: #212121;
+    text-decoration: none;
+    margin-left: auto;
+  }
+
+
+  .logo {
+
+  }
+
+  .navz {
+    margin-left: auto;
+    display: flex;
+  }
+}
+
+.startNav {
+  .mainnav {
+    height: auto;
+  }
+
+  .fixed {
+    transform: translateY(-100%);
+  }
+}
+
+.startNav.visible {
+  .fixed {
+    transform: translateY(0%);
   }
 }

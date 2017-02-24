@@ -16,6 +16,7 @@ const router = express.Router();
 app.use('/api', router);
 app.use('/static', express.static('dist'));
 app.use('/images', express.static('src/img'));
+app.use('/fonts', express.static('fonts'));
 
 app.set('views', path.join(__dirname, '../pages'));
 app.engine('html', renderFile);
@@ -41,6 +42,12 @@ const page = (res, req, getData) => {
 app.get('/', (req, res) => page(res, req, landing));
 app.get('/albums', (req, res) => page(res, req, collections));
 app.get('/albums/:collectionId', (req, res) => page(res, req, collectionPage));
+app.get('/about', (req, res) => {
+  res.render('index.html', {
+    template : 'about',
+    title : 'About'
+  })
+});
 
 
 // Api
