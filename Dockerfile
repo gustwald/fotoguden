@@ -13,4 +13,4 @@ RUN npm install -g babel-cli
 EXPOSE 4700
 
 # Start the app
-CMD npm start
+CMD npm run prod
