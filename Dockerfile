@@ -7,9 +7,7 @@ ADD . /usr/src/app
 # Install dependencies
 WORKDIR /usr/src/app
 
-RUN npm install -g yarn
-RUN yarn
-RUN npm rebuild node-sass
+RUN npm install -g nodemon
 
 # Expose the app port
 EXPOSE 4700
