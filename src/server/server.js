@@ -58,7 +58,7 @@ router.get('/collections', (req, res) => collectionPager(req, res));
 
 
 const server = http.createServer(app);
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4700;
 
 
 server.listen(PORT, () => {
