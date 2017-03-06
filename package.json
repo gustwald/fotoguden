@@ -6,7 +6,7 @@
   "author": "hi@jonte.io",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon src/server/server.babel.js",
+    "start": "babel-node src/server/server.js --presets es2015,stage-2",
     "css": "node-sass --include-path scss src/scss/main.scss dist/main.css --watch",
     "js": "babel src/js/main.js --watch --out-file dist/main.min.js",
     "prod": "babel-node src/server/server.babel.js"
@@ -26,6 +26,7 @@
     "path": "^0.12.7",
     "qs": "^6.3.0",
     "request": "^2.79.0",
+    "vimeo": "^1.2.0",
     "webpack": "1.13",
     "whatwg-fetch": "^2.0.2"
   },

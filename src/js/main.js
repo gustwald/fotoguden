@@ -21,6 +21,9 @@ $(() => {
       });
     })
   }
+
+  $('.grid-wrapper').imagesLoaded(() => {
+    var msnry = new Masonry('.grid-wrapper', {
  
 
   if($('.grid-wrapper').length > 0) {

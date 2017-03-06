@@ -7,6 +7,7 @@ import { renderFile } from 'ejs';
 import { getCollections } from '../flickrApi';
 import landing from './landing';
 import { collections, collectionDetail, getImage, collectionPage, collectionPager } from './collections';
+import videos from './videos';
 
 const PROD = process.env.NODE_ENV === 'production';
 
@@ -48,6 +49,7 @@ app.get('/about', (req, res) => {
     title : 'About'
   })
 });
+app.get('/videos', (req, res) => page(res, req, videos));
 
 
 // Api

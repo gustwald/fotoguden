@@ -18,8 +18,11 @@
     </header>
     <main class="content">
 
-        <section>
+        <section class="favorites">
+            <div class="grid">
             <h2>Selected favorites</h2>
+            </div>
+            
             <div class="grid">
                 <div class="grid-wrapper">
                     <% selectedImages.forEach(function(s) { %>
@@ -31,8 +34,12 @@
             </div>
         </section>
 
+        <%- include cta %>
+
         <section>
+            <div class="grid">
             <h2>Latest albums</h2>
+            </div>
             <%- include collectionList %>
         </section>
 
